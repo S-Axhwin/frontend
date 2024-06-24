@@ -29,13 +29,13 @@ const page = () => {
   }
   return (
     <div className="grid w-full h-screen place-items-center">
-        <form onSubmit={checkState} className="flex flex-col gap-3">
+        <form onSubmit={checkState} className="flex flex-col gap-3 w-[40%]">
             <Input
-            placeholder="enter emp name"
+            placeholder="Enter name"
             onChange={handleChanges}
             name="name"/>
             <Input
-            placeholder="enter emp email"
+            placeholder="Enter email"
             onChange={handleChanges}
             name="email"/>
 

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ClerkProvider } from '@clerk/nextjs'
 import { Toaster } from "@/components/ui/toaster"
 import { dark } from '@clerk/themes';
+import RadialGradient from "@/components/magicui/radial-gradient";
 
 import Navbar from "@/components/ui/Navbar";
 const inter = Inter({ subsets: ["latin"] });
@@ -25,6 +26,7 @@ export default function RootLayout({
     }}>
     <html lang="en">
       <body className={inter.className + "overflow-x-hidden"}>
+        <RadialGradient/>
         <Navbar />
         <ThemeProvider defaultTheme="dark" attribute="class"  >
         {children}

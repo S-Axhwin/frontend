@@ -4,8 +4,10 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Edit } from "./dialog";
-
+import something from "../something1.png"
+//frontend/src/app/something.png
 import redi from "./redi";
+import Image from "next/image";
 const page = () => {
   const { user, isLoaded } = useUser();
   if(!isLoaded) return "Loading";
@@ -26,7 +28,20 @@ const page = () => {
     
     if(!conf) return 0;
     
-    
+    try{
+      await axios.post("http://localhost:8080/api/v1/delete", {email});
+      settrigger(!trigger);
+      toast({
+        title: "User deleted",
+        description: `user deleted bruh!`
+      })
+    } catch (e) {
+      toast({
+        title: "User not deleted",
+        description: "error while deleting user"
+      })
+
+    }
   }
 
   const updateUser = async (email:string, newName:string) => {
@@ -36,7 +51,7 @@ const page = () => {
       toast({
         title: "User update",
         description: `user name update from to `
-      })
+      });
     } catch (e) {
       toast({
         title: "User not updated",
@@ -50,9 +65,14 @@ const page = () => {
         <div className="flex flex-col gap-3">
     {records?.map((item:any, ind:any) => {
         return (
-            <div key={ind} className="bg-slate-700 p-3 rounded-xl">
-                {item.name} : {item.email}
+            <div key={ind} className="bg-slate-900 border-2 p-3 rounded-xl flex justify-between">
+                <div className="m-auto">
+                  {item.name} : {item.email}
+                </div>
                 <Edit updateUser={updateUser} email={item.email} />
+                <Image src={something} alt="delete" className="w-[1.5rem] m-2 "  onClick={() => {
+                  deleteuser(item.email)
+                }} />
             </div>
         )
     })}

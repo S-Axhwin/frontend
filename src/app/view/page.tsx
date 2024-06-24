@@ -1,13 +1,19 @@
 "use client"
-
+import { useUser } from "@clerk/nextjs";
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Edit } from "./dialog";
+
+import redi from "./redi";
 const page = () => {
+  const { user, isLoaded } = useUser();
+  if(!isLoaded) return "Loading";
+  if(isLoaded && !user) redi();
   const [records, setRecords] = useState<any>();
   const [trigger, settrigger] = useState(true);
   const { toast } = useToast()
+
   useEffect(() => {
     (async() => {
         const res = await axios.get("http://localhost:8080/api/v1/view");

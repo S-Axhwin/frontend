@@ -2,10 +2,12 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 import { Edit } from "./dialog";
 const page = () => {
   const [records, setRecords] = useState<any>();
   const [trigger, settrigger] = useState(true);
+  const { toast } = useToast()
   useEffect(() => {
     (async() => {
         const res = await axios.get("http://localhost:8080/api/v1/view");
@@ -18,16 +20,27 @@ const page = () => {
     
     if(!conf) return 0;
     
-    await axios.post("http://localhost:8080/api/v1/delete", {email});
-    settrigger(!trigger);
+    
   }
 
   const updateUser = async (email:string, newName:string) => {
-    await axios.post("http://localhost:8080/api/v1/update", {email, newName})
-    settrigger(!trigger);
+    try{
+      await axios.post("http://localhost:8080/api/v1/update", {email, newName});
+      settrigger(!trigger);
+      toast({
+        title: "User update",
+        description: `user name update from to `
+      })
+    } catch (e) {
+      toast({
+        title: "User not updated",
+        description: "error while updating user"
+      })
+
+    }
   }
   return (
-    <div className="grid place-items-center w-full h-screen">
+    <div className="grid place-items-center w-full h-screen ">
         <div className="flex flex-col gap-3">
     {records?.map((item:any, ind:any) => {
         return (

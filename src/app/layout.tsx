@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { Toaster } from "@/components/ui/toaster"
 import { dark } from '@clerk/themes';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,8 +23,8 @@ export default function RootLayout({
       baseTheme: dark
     }}>
     <html lang="en">
-      <body className={inter.className}>
-        <header className="flex justify-end m-5">
+      <body className={inter.className + "overflow-x-hidden"}>
+        <header className="flex justify-end p-5 ">
         <SignedOut>
               <SignInButton />
             </SignedOut>
@@ -33,6 +34,7 @@ export default function RootLayout({
         </header>
         <ThemeProvider defaultTheme="dark" attribute="class"  >
         {children}
+        <Toaster/>
         </ThemeProvider>
       </body>
     </html>

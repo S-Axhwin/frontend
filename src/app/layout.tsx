@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 import { Toaster } from "@/components/ui/toaster"
 import { dark } from '@clerk/themes';
 
+import Navbar from "@/components/ui/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,14 +25,7 @@ export default function RootLayout({
     }}>
     <html lang="en">
       <body className={inter.className + "overflow-x-hidden"}>
-        <header className="flex justify-end p-5 ">
-        <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-        </header>
+        <Navbar />
         <ThemeProvider defaultTheme="dark" attribute="class"  >
         {children}
         <Toaster/>

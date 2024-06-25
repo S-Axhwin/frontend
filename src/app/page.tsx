@@ -188,7 +188,7 @@ const SmallerComp = () => {
       <div>something</div>
       <DotPattern
         className={cn(
-          "[mask-img:radial-gradient(200px_circle_at_center,white,transparent)]"
+          "[mask-Image:radial-gradient(200px_circle_at_center,white,transparent)]"
         )}
       />
     </section>

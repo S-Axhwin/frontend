@@ -7,13 +7,16 @@ import { Edit } from "./dialog";
 import something from "../something1.png"
 
 import redi from "./redi";
+import Image from "next/image";
 const ViewComp = () => {
-  const [records, setRecords] = useState<any>("");
+  const [records, setRecords] = useState<any>();
   const [trigger, settrigger] = useState(true);
   const { toast } = useToast()
   useEffect(() => {
     (async() => {
         const res = await axios.get("https://backendv2-production-a9cd.up.railway.app/api/v1/view");
+        console.log(res.data.record);
+        
         setRecords(res.data.records);
     })()
   }, [trigger])
@@ -70,7 +73,7 @@ const ViewComp = () => {
                   {item.name} : {item.email}
                 </div>
                 <Edit updateUser={updateUser} email={item.email} />
-                <img src={"../"} alt="delete" className="w-[1.5rem] m-2 "  onClick={() => {
+                <Image src={something} alt="delete" className="w-[1.5rem] m-2 "  onClick={() => {
                   deleteuser(item.email)
                 }} />
             </div>

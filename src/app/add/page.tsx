@@ -6,12 +6,10 @@ import { useState } from "react"
 import axios from "axios";
 import action from "./action";
 
-const page = () => {
-
+const Page = () => {
+  "use client"
   const [formData, setformData] = useState<any>();
-  const handleSubmit = async () => {
-    
-  }
+
 
   const handleChanges = (e:any) => {
     e.preventDefault();
@@ -45,4 +43,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

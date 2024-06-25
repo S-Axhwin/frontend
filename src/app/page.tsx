@@ -188,14 +188,14 @@ const SmallerComp = () => {
       <div>something</div>
       <DotPattern
         className={cn(
-          "[mask-image:radial-gradient(200px_circle_at_center,white,transparent)]"
+          "[mask-img:radial-gradient(200px_circle_at_center,white,transparent)]"
         )}
       />
     </section>
   );
 };
 
-const page = async () => {
+const Page = async () => {
   const user = await currentUser();
   
   return (
@@ -245,4 +245,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Page;

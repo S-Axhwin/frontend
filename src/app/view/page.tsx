@@ -18,7 +18,7 @@ const page = () => {
 
   useEffect(() => {
     (async() => {
-        const res = await axios.get("http://localhost:8080/api/v1/view");
+        const res = await axios.get("https://backendv2-production-a9cd.up.railway.app/api/v1/view");
         setRecords(res.data.records);
     })()
   }, [trigger])
@@ -29,7 +29,7 @@ const page = () => {
     if(!conf) return 0;
     
     try{
-      await axios.post("http://localhost:8080/api/v1/delete", {email});
+      await axios.post("https://backendv2-production-a9cd.up.railway.app/api/v1/delete", {email});
       settrigger(!trigger);
       toast({
         title: "User deleted",
@@ -46,7 +46,7 @@ const page = () => {
 
   const updateUser = async (email:string, newName:string) => {
     try{
-      await axios.post("http://localhost:8080/api/v1/update", {email, newName});
+      await axios.post("https://backendv2-production-a9cd.up.railway.app/api/v1/update", {email, newName});
       settrigger(!trigger);
       toast({
         title: "User update",

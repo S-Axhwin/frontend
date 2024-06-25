@@ -8,7 +8,7 @@ const Navbar = () => {
   if(!user) return <div className="flex justify-end p-4"><SignInButton /></div>
   return (
     <div>
-    <header className="flex justify-between p-5 ">
+    <header className="flex justify-between p-5  z-100">
     
     <div>
         <ul className="flex gap-3">

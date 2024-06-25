@@ -24,7 +24,7 @@ const page = () => {
   const checkState = async (e:any) => {
     e.preventDefault();
     console.log(formData);
-    const res = await axios.post("http://localhost:8080/api/v1/add", {...formData});
+    const res = await axios.post("https://backendv2-production-a9cd.up.railway.app/api/v1/add", {...formData});
     action();
   }
   return (

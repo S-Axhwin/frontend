@@ -26,7 +26,6 @@ export default function RootLayout({
     }}>
     <html lang="en">
       <body className={inter.className + "overflow-x-hidden"}>
-        <RadialGradient/>
         <Navbar />
         <ThemeProvider defaultTheme="dark" attribute="class"  >
         {children}
